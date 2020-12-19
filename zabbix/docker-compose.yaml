@@ -1,0 +1,11 @@
+version: '2'
+services:
+
+  api:
+    build: api_v1/.
+    ports:
+      - "4000:5000"
+    links:
+      - zabbix-appliance
+    depends_on:
+      - zabbix-appliance

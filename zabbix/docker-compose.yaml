@@ -1,11 +1,35 @@
-version: '2'
+version: '3'
+
 services:
 
   api:
-    build: api_v1/.
-    ports:
-      - "4000:5000"
-    links:
-      - zabbix-appliance
+    image: rm338568/ubuntu-api
     depends_on:
-      - zabbix-appliance
+      - rm338568/zabbix-appliance
+    deploy:
+      replicas: 1
+      #update_config:
+      #  parallelism: 1
+      #  delay: 10is
+      mode: replicated
+      restart_policy:
+        condition: on-failure
+
+  zabbix-appliance:
+    image: rm338568/zabbix-appliance
+    ports:
+      - "80:80"
+      - "10051:10051"
+    volumes:
+      - db-data:/var/lib/mysql
+    deploy:
+      replicas: 1
+      # resources:
+      #   limits:
+      #     cpus: "0.1"
+      #     memory: 50M
+      restart_policy:
+        condition: on-failure
+
+volumes:
+  db-data:

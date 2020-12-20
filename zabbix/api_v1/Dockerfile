@@ -8,4 +8,6 @@ RUN git clone https://github.com/rtocantins/Docker.git
 
 ENV ZBX_SERVER=10.20.144.104
 
-CMD [ "/Docker/zabbix/api_v1/am2302.sh" ]
+EXPOSE 10050/TCP
+
+#CMD [ "/Docker/zabbix/api_v1/am2302.sh" ]

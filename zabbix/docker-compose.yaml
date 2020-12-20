@@ -17,13 +17,17 @@ services:
       restart_policy:
         condition: on-failure
 
-  zabbix-appliance:
+    zabbix-appliance:
     image: rm338568/zabbix-appliance
     ports:
       - "80:80"
+      - "443:443"
       - "10051:10051"
     volumes:
-      - db-data:/var/lib/zabbix
+      - conf-zabbix:/var/lib/zabbix
+      - etc-zabbix:/etc/zabbix
+      - usr-zabbix:/usr/lib/zabbix
+      - db-data:/var/lib/mysql
     deploy:
       replicas: 1
       # resources:
@@ -32,6 +36,3 @@ services:
       #     memory: 50M
       restart_policy:
         condition: on-failure
-
-volumes:
-  db-data:

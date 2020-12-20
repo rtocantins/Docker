@@ -21,7 +21,7 @@ services:
       - "80:80"
       - "10051:10051"
     volumes:
-      - db-data:/var/lib/mysql
+      - db-data:/var/lib/zabbix
     deploy:
       replicas: 1
       # resources:

@@ -36,3 +36,9 @@ services:
       #     memory: 50M
       restart_policy:
         condition: on-failure
+        
+volumes:
+        conf-zabbix:
+        etc-zabbix:
+        usr-zabbix:
+        db-data:

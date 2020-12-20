@@ -4,6 +4,7 @@ MAINTAINER Rodrigo Tocantins <rtocantins.silva@gmail.com>
 
 RUN apt-get update
 RUN apt-get install -y git zabbix-agent wget
+RUN rm -rf /Docker
 RUN git clone https://github.com/rtocantins/Docker.git
 
 ENV ZBX_SERVER=10.20.144.104

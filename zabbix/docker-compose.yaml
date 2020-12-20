@@ -4,6 +4,8 @@ services:
 
   api:
     image: rm338568/ubuntu-api
+    ports:
+      - "10050:"10050"
     depends_on:
       - rm338568/zabbix-appliance
     deploy:
